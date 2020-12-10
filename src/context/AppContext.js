@@ -1,13 +1,23 @@
+import { useState, useContext, createContext, useCallback } from 'react';
+import { initialCards, initialDecks, initialInventory } from '../mockdata/CardData';
 
-export const AppContext = createContext('');
+export const AppContext = createContext();
 
-export const AppContextProvider = ({children}) => {
+const AppContextProvider = ({children}) => {
+    const [applicationState, setApplicationState] = useState({
+        decks: initialDecks,
+        inventory: initialInventory,
+    });
+
     return (
     <AppContext.Provider value={{
-        cards: initialCards
+        ...applicationState,
+        cards: initialCards,
+        // buyCard: buyCardForPlayer,
     }}>
         {children}
     </AppContext.Provider>
     )
 }; 
 
+export default AppContextProvider;
