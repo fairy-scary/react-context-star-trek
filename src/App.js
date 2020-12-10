@@ -3,9 +3,11 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Deck from "./components/Deck";
 import Store from "./components/Store";
 import Navbar from "./components/Navbar";
+import { AppContext, AppContextProvider } from "./context";
 
 const App = () => {
   return (
+    <AppContextProvider.Provider>
     <>
       <h1 className="title is-1">Star Trek Trading Card Store!</h1>
       <p>
@@ -24,7 +26,8 @@ const App = () => {
         </Route>
       </Switch>
     </>
-  );
+    </AppContextProvider.Provider>
+    );
 };
 
 export default App;
